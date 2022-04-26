@@ -1,0 +1,26 @@
+<div class="d-flex justify-content-between mt-2">
+    <h3>Bands</h3>
+    <div>
+      <button class="btn btn-primary">Create</button>
+    </div>
+  </div>
+  <div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date Formed</th>
+        <th>Members</th>
+        <th>Albums</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let band of bands">
+          <td>{{band.name}}</td>
+          <td>{{band.yearFormed |date:"yyyy"}}</td>
+          <td>{{band.members}}</td>
+          <td>{{band.albumIds}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

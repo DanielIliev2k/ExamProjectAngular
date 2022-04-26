@@ -1,0 +1,98 @@
+{
+  "songs": [
+    {
+      "id": 1,
+      "createdAt": "2021-04-24T08:35:48.749Z",
+      "updatedAt": "2021-04-24T08:35:48.749Z",
+      "yearReleased": "2021-04-24T08:35:48.749Z",
+      "name": "Ride the Lightning",
+      "bandId": 1,
+      "albumId": 1
+      
+    },
+{
+      "id": 2,
+      "createdAt": "2021-04-24T08:35:48.749Z",
+      "updatedAt": "2021-04-24T08:35:48.749Z",
+      "yearReleased": "2021-04-24T08:35:48.749Z",
+      "name": "Master of Puppets",
+      "bandId": 1,
+      "albumId": 1
+      
+    },
+{
+      "id": 3,
+      "createdAt": "2021-04-24T08:35:48.749Z",
+      "updatedAt": "2021-04-24T08:35:48.749Z",
+      "yearReleased": "2021-04-24T08:35:48.749Z",
+      "name": "Damage Inc",
+      "bandId": 1,
+      "albumId": 1
+      
+    }
+  ],
+  "bands": [
+    {
+      "id": 1,
+      "createdAt": "2021-04-24T08:35:48.749Z",
+      "updatedAt": "2021-04-24T08:35:48.749Z",
+      "yearFormed": "2021-04-24T08:35:48.749Z",
+      "name": "Linkin Park",
+      "albumIds": [1,2],
+      "members":["Chester Bennington","Brad Delson","Mike Shinoda"]
+      
+    },
+    {
+      "id": 2,
+      "createdAt": "2021-04-24T08:35:48.749Z",
+      "updatedAt": "2021-04-24T08:35:48.749Z",
+      "yearFormed": "2021-04-24T08:35:48.749Z",
+      "name": "Metallica",
+      "albumIds": [3,4],
+      "members":["James Hetfield","Kirk Hammet","Robert Trujillo"]
+      
+    },
+    {
+      "id": 3,
+      "createdAt": "2021-04-24T08:35:48.749Z",
+      "updatedAt": "2021-04-24T08:35:48.749Z",
+      "yearFormed": "2021-04-24T08:35:48.749Z",
+      "name": "Iron Maiden",
+      "albumIds": [5,6],
+      "members":["Bruce Dikinson"]
+      
+    }
+  ],
+  "albums": [
+    {
+      "id": 1,
+      "createdAt": "2021-04-24T08:35:48.749Z",
+      "updatedAt": "2021-04-24T08:35:48.749Z",
+      "yearReleased": "2021-04-24T08:35:48.749Z",
+      "name": "Metallica",
+      "bandId": 2,
+      "songIds":[2,3]
+      
+    },
+    {
+      "id": 2,
+      "createdAt": "2021-04-24T08:35:48.749Z",
+      "updatedAt": "2021-04-24T08:35:48.749Z",
+      "yearReleased": "2021-04-24T08:35:48.749Z",
+      "name": "Ride the Lightning",
+      "bandId": 2,
+      "songIds":[1,2,3]
+      
+    },
+    {
+      "id": 3,
+      "createdAt": "2021-04-24T08:35:48.749Z",
+      "updatedAt": "2021-04-24T08:35:48.749Z",
+      "yearReleased": "2021-04-24T08:35:48.749Z",
+      "name": "Hybrid Theory",
+      "bandId": 1,
+      "songIds":[]
+      
+    }
+  ]
+}

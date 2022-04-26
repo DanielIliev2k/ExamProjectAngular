@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-between mt-2">
+    <h3>Albums</h3>
+    <div>
+      <button class="btn btn-primary">Create</button>
+    </div>
+  </div>
+  <div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date Released</th>
+        <th>Songs</th>
+        <th>Band</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let album of albums">
+          <td>{{album.name}}</td>
+          <td>{{album.yearReleased |date:"yyyy"}}</td>
+          <td *ngFor="let song of album.songs">{{song.name}}</td>
+          <td>{{album.band.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
