@@ -11,7 +11,6 @@ import { AlbumsService } from '../../services/albums.service';
 export class AlbumsListComponent implements OnInit {
 
   albums!:Album[];
-  songs!:Song[];
 
   constructor(private albumService: AlbumsService) { }
 

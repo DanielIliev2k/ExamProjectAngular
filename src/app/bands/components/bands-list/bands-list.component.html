@@ -19,7 +19,7 @@
           <td>{{band.name}}</td>
           <td>{{band.yearFormed |date:"yyyy"}}</td>
           <td>{{band.members}}</td>
-          <td>{{band.albumIds}}</td>
+          <td *ngFor="let album of band.albums">{{album.name}</td>
         </tr>
       </tbody>
     </table>

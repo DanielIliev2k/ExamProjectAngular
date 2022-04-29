@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between mt-2">
     <h3>Songs</h3>
     <div>
-      <button class="btn btn-primary">Create</button>
+      <button (click)="onCreateClick()" class="btn btn-primary">Create</button>
     </div>
   </div>
   <div>
@@ -18,8 +18,8 @@
         <tr *ngFor="let song of songs">
             <td>{{song.name}}</td>
             <td>{{song.yearReleased |date:"yyyy"}}</td>
-            <td>{{song.bandId}}</td>
-            <td>{{song.albumId}}</td>
+            <td>{{song.band.name}}</td>
+            <td>{{song.album.name}}</td>
           </tr>
       </tbody>
     </table>

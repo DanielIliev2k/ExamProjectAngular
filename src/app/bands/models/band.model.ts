@@ -7,7 +7,7 @@ export class Band{
   
     name!: string;
     yearFormed!: Date;
-    albumIds!: number[];
+    albumsId!: number[];
     members!: string[];
   
     albums!: Album[];

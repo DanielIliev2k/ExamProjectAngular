@@ -8,19 +8,39 @@ import { SongsListComponent } from './songs/components/songs-list/songs-list.com
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlbumsListComponent } from './albums/components/albums-list/albums-list.component';
 import { BandsListComponent } from './bands/components/bands-list/bands-list.component';
+import { SongsDeleteComponent } from './songs/components/songs-delete/songs-delete.component';
+import { SongsUpdateComponent } from './songs/components/songs-update/songs-update.component';
+import { BandsDeleteComponent } from './bands/components/bands-delete/bands-delete.component';
+import { BandsUpdateComponent } from './bands/components/bands-update/bands-update.component';
+import { AlbumsDeleteComponent } from './albums/components/albums-delete/albums-delete.component';
+import { AlbumsUpdateComponent } from './albums/components/albums-update/albums-update.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ToastrModule } from 'ngx-toastr';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     SongsListComponent,
     AlbumsListComponent,
-    BandsListComponent
+    BandsListComponent,
+    SongsDeleteComponent,
+    SongsUpdateComponent,
+    BandsDeleteComponent,
+    BandsUpdateComponent,
+    AlbumsDeleteComponent,
+    AlbumsUpdateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
-    HttpClientModule
+    // BrowserAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    ModalModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-center'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

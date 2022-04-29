@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { Song } from '../../models/song.model';
 import { SongsService } from '../../services/songs.service';
+import { SongsUpdateComponent } from '../songs-update/songs-update.component';
+import { SongsDeleteComponent } from '../songs-delete/songs-delete.component';
 
 @Component({
   selector: 'app-songs-list',
@@ -11,7 +14,10 @@ export class SongsListComponent implements OnInit {
 
   songs!:Song[];
 
-  constructor(private songsService: SongsService) { }
+  constructor(
+    private songsService: SongsService,
+    private bsModalService: BsModalService
+    ) { }
 
   ngOnInit(): void {
     this.getAll();
@@ -23,5 +29,40 @@ export class SongsListComponent implements OnInit {
         this.songs = response;
       }
     })
+  }
+  onCreateClick(): void {
+    this.onEditClick();
+  }
+
+  onEditClick(song?: Song): void {
+    const ref = this.bsModalService.show(SongsUpdateComponent, {
+      initialState: {
+        song: song
+      }
+    });
+
+    if (ref.content) {
+      ref.content.saved.subscribe({
+        next: () => {
+          this.getAll();
+        }
+      });
+    }
+  }
+
+  onDeleteClick(song: Song): void {
+    const ref = this.bsModalService.show(SongsDeleteComponent, {
+      initialState: {
+        song: song
+      }
+    })
+
+    if (ref.content) {
+      ref.content.songDeleted.subscribe({
+        next: () => {
+          this.getAll();
+        }
+      })
+    }
   }
 }

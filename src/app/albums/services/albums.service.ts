@@ -15,7 +15,7 @@ export class AlbumsService {
     const url = 'http://localhost:3000/albums';
     const httpParams = new HttpParams({
       fromObject: {
-        _expand: ['band','song']
+        _expand: ['band']
       }
     });
     
