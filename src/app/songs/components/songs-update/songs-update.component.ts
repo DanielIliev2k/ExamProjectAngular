@@ -2,6 +2,8 @@ import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { Album } from 'src/app/albums/models/album.model';
+import { AlbumsService } from 'src/app/albums/services/albums.service';
 import { Band } from 'src/app/bands/models/band.model';
 import { BandsService } from 'src/app/bands/services/bands.service';
 import { Song } from '../../models/song.model';
@@ -17,12 +19,14 @@ export class SongsUpdateComponent implements OnInit {
   formGroup!: FormGroup;
 
   song!: Song;
-  bandsService!: BandsService;
   bands!:Band[];
+  albums!:Album[];
 
   saved = new EventEmitter<Song>();
 
   constructor(
+    private albumsService: AlbumsService,
+    private bandsService: BandsService,
     private songsService: SongsService,
     private bsModalRef: BsModalRef,
     private toastrService: ToastrService,
@@ -32,7 +36,9 @@ export class SongsUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
+
     this.getBands();
+    this.getAlbums();
   }
   private getBands(): void {
     this.bandsService.getAll$().subscribe({
@@ -41,15 +47,22 @@ export class SongsUpdateComponent implements OnInit {
       }
     })
   }
+  private getAlbums(): void {
+    this.albumsService.getAll$().subscribe({
+      next: (response) => {
+        this.albums = response;
+      }
+    })
+  }
 
   hideDialog(): void {
     this.bsModalRef.hide();
+    
   }
 
   onSubmit(): void {
     if (this.formGroup.invalid) {
       this.formGroup.markAllAsTouched();
-
       return;
     }
 
@@ -60,7 +73,7 @@ export class SongsUpdateComponent implements OnInit {
 
     this.songsService.save$(body).subscribe({
       next: (response) => {
-        this.toastrService.success('Category was successfully saved.', 'Success');
+        this.toastrService.success('Song was successfully saved.', 'Success');
         this.saved.emit(response);
         this.hideDialog();
       }
@@ -73,10 +86,10 @@ export class SongsUpdateComponent implements OnInit {
     }
 
     this.formGroup = this.fb.group({
-      name: [this.song.name, [Validators.required, Validators.minLength(3)]],
+      name: [this.song.name, [Validators.required]],
       bandId: ['' , [Validators.required]],
-      albumId: ['' , [Validators.required]],
+      albumId: ['' , [Validators.required]]
     });
+    
   }
-
 }

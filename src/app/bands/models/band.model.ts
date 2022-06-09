@@ -1,4 +1,4 @@
-import { Album } from "src/app/albums/models/album.model";
+
 
 export class Band{
     id!: number;
@@ -6,9 +6,7 @@ export class Band{
     updatedAt!: Date;
   
     name!: string;
-    yearFormed!: Date;
-    albumsId!: number[];
+    yearFormed!: number;
     members!: string[];
   
-    albums!: Album[];
 }

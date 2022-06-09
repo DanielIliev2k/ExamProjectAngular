@@ -4,6 +4,7 @@ import { Song } from '../../models/song.model';
 import { SongsService } from '../../services/songs.service';
 import { SongsUpdateComponent } from '../songs-update/songs-update.component';
 import { SongsDeleteComponent } from '../songs-delete/songs-delete.component';
+import { sortSongs } from 'scripts/sortSongs';
 
 @Component({
   selector: 'app-songs-list',
@@ -31,10 +32,13 @@ export class SongsListComponent implements OnInit {
     })
   }
   onCreateClick(): void {
-    this.onEditClick();
+    this.onUpdateClick();
+  }
+  public sort(n:number):void{
+    sortSongs(n);
   }
 
-  onEditClick(song?: Song): void {
+  onUpdateClick(song?: Song): void {
     const ref = this.bsModalService.show(SongsUpdateComponent, {
       initialState: {
         song: song
@@ -65,4 +69,5 @@ export class SongsListComponent implements OnInit {
       })
     }
   }
+  
 }

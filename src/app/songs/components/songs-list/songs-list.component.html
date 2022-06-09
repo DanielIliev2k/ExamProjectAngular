@@ -1,26 +1,34 @@
-<div class="d-flex justify-content-between mt-2">
+<div class="d-flex justify-content-between m-2">
     <h3>Songs</h3>
     <div>
-      <button (click)="onCreateClick()" class="btn btn-primary">Create</button>
+      <button (click)="onCreateClick()" class="btn btn-primary mb-2">Create</button>
     </div>
   </div>
-  <div>
-    <table class="table">
+    <table class="table table-striped table-dark table-hover" id="songsTable">
       <thead>
       <tr>
-        <th>Name</th>
-        <th>Year Released</th>
-        <th>Band</th>
-        <th>Album</th>
+        <th>Name <button class="btn btn-light btn-sml pd-0" (click)="sort(0)">&#8597;</button></th>
+        <th>Year Released <button class="btn btn-light btn-sml pd-0" (click)="sort(1)">&#8597;</button></th>
+        <th>Band <button class="btn btn-light btn-sml pd-0" (click)="sort(2)">&#8597;</button></th>
+        <th>Album <button class="btn btn-light btn-sml pd-0" (click)="sort(3)">&#8597;</button></th>
+        <th>Options</th>
       </tr>
       </thead>
       <tbody>
         <tr *ngFor="let song of songs">
             <td>{{song.name}}</td>
-            <td>{{song.yearReleased |date:"yyyy"}}</td>
+            <td>{{song.album.yearReleased}}</td>
             <td>{{song.band.name}}</td>
             <td>{{song.album.name}}</td>
+            <td>
+              <button (click)="onUpdateClick(song)"
+                class="btn btn-sm btn-light ms-2 mb-2">Edit
+              </button>
+              <button (click)="onDeleteClick(song)"
+                class="btn btn-sm btn-danger ms-2 mb-2">Delete
+              </button>
+            </td>
           </tr>
       </tbody>
     </table>
-  </div>
+    

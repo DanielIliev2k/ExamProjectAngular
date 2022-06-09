@@ -20,10 +20,10 @@ export class SongsDeleteComponent {
               private toastrService: ToastrService) {
   }
 
-  deleteCategory(): void {
+  deleteSong(): void {
     this.songService.delete$(this.song.id).subscribe({
       next: () => {
-        this.toastrService.success('Song was successfully deleted.', 'Success');
+        this.toastrService.error('Song ' + '"' + this.song.name + '"' + ' was successfully deleted.', 'Success');
         this.hideDialog();
         this.songDeleted.emit();
       }

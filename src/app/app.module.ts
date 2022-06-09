@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SongsListComponent } from './songs/components/songs-list/songs-list.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlbumsListComponent } from './albums/components/albums-list/albums-list.component';
 import { BandsListComponent } from './bands/components/bands-list/bands-list.component';
 import { SongsDeleteComponent } from './songs/components/songs-delete/songs-delete.component';
@@ -17,6 +15,9 @@ import { AlbumsUpdateComponent } from './albums/components/albums-update/albums-
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastrModule } from 'ngx-toastr';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BandsDeleteErrorComponent } from './bands/components/band-delete-error/bands-delete-error.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AlbumsDeleteErrorComponent } from './albums/components/albums-delete-error/albums-delete-error.component';
 
 @NgModule({
   declarations: [
@@ -29,12 +30,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     BandsDeleteComponent,
     BandsUpdateComponent,
     AlbumsDeleteComponent,
-    AlbumsUpdateComponent
+    AlbumsUpdateComponent,
+    BandsDeleteErrorComponent,
+    AlbumsDeleteErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // BrowserAnimationsModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),

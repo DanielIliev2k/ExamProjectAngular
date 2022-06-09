@@ -7,7 +7,6 @@ export class Song{
   updatedAt!: Date;
 
   name!: string;
-  yearReleased!: Date;
   bandId!: number;
   albumId!: number;
 

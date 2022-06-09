@@ -13,15 +13,36 @@ export class BandsService {
 
   getAll$(): Observable<Band[]> {
     const url = 'http://localhost:3000/bands';
-    const httpParams = new HttpParams({
-      fromObject: {
-        _expand: ['albums']
-      }
-    });
+    
     
 
-    return this.httpClient.get<Band[]>(url, {
-      params: httpParams
-    });
+    return this.httpClient.get<Band[]>(url);
+  }
+  save$(band: Band): Observable<Band> {
+    if (band.id) {
+      return this.update$(band);
+    } else {
+      return this.create$(band);
+    }
+  }
+  create$(band: Band): Observable<Band> {
+    const url = 'http://localhost:3000/bands';
+
+    band.createdAt = new Date();
+    band.updatedAt = new Date();
+
+    return this.httpClient.post<Band>(url, band);
+  }
+  update$(band: Band): Observable<Band> {
+    const url = 'http://localhost:3000/bands/' + band.id;
+
+    band.updatedAt = new Date();
+
+    return this.httpClient.patch<Band>(url, band);
+  }
+  delete$(id: number): Observable<void> {
+    const url = 'http://localhost:3000/bands/' + id;
+
+    return this.httpClient.delete<void>(url);
   }
 }

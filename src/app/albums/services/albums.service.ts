@@ -24,4 +24,31 @@ export class AlbumsService {
       params: httpParams
     });
   }
+  save$(album: Album): Observable<Album> {
+    if (album.id) {
+      return this.update$(album);
+    } else {
+      return this.create$(album);
+    }
+  }
+  create$(album: Album): Observable<Album> {
+    const url = 'http://localhost:3000/albums';
+
+    album.createdAt = new Date();
+    album.updatedAt = new Date();
+
+    return this.httpClient.post<Album>(url, album);
+  }
+  update$(album: Album): Observable<Album> {
+    const url = 'http://localhost:3000/albums/' + album.id;
+
+    album.updatedAt = new Date();
+
+    return this.httpClient.patch<Album>(url, album);
+  }
+  delete$(id: number): Observable<void> {
+    const url = 'http://localhost:3000/albums/' + id;
+
+    return this.httpClient.delete<void>(url);
+  }
 }

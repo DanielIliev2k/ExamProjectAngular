@@ -2,3 +2,49 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+
+@import '~ngx-toastr/toastr';
+
+.modal-content{
+    
+  background-image: url("../images/metal-bg.jpg");
+  background-position: center;
+  background-size: cover;
+  color:white;
+  border-radius: 15px;
+}
+body{
+    background-image: url("../images/page-bg.jpg");
+    color:white;
+}
+.nav-link{
+  font-size: 15pt;
+}
+.navbar-brand{
+  font-size: 30pt;
+  
+}
+nav{
+  background-color: transparent;
+}
+table{
+    border-collapse:separate;
+    border:solid black 1px;
+    border-radius:6px;
+}
+thead {
+  border:solid white 10px;
+  border-collapse: collapse ;
+}
+.btn-sml{
+    padding-inline-start: 3px;
+    padding-inline-end: 3px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: #6c7176;
+    border: none;
+    float: right ;
+}

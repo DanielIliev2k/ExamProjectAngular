@@ -1,1 +1,63 @@
-<p>bands-update works!</p>
+<form *ngIf="formGroup"
+      [formGroup]="formGroup"
+      (ngSubmit)="onSubmit()">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{band.id ? 'Edit' : 'Create'}} Band</h4>
+    <button type="button" (click)="hideDialog()"
+            class="btn-close close pull-right" aria-label="Close">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+        <label for="name">Name <span class="text-danger">*</span></label>
+        <input formControlName="name"
+               type="text"
+               class="form-control"
+               id="name"
+               placeholder="Enter name">
+        <ng-container *ngIf="formGroup.get('name')?.invalid && formGroup.get('name')?.touched">
+          <small *ngIf="formGroup.get('name')?.errors?.['required']"
+                 class="form-text text-danger">This field is required</small>
+          <small *ngIf="formGroup.get('name')?.errors?.['minlength']"
+                 class="form-text text-danger">The minimum length
+            is {{formGroup.get('name')?.errors?.['minlength'].requiredLength}}</small>
+        </ng-container>
+      </div>
+      <div class="form-group">
+        <label for="yearFormed">Year Formed <span class="text-danger">*</span></label>
+        <input formControlName="yearFormed"
+               type="number"
+               class="form-control"
+               id="yearFormed"
+               placeholder="Enter year">
+        <ng-container *ngIf="formGroup.get('yearFormed')?.invalid && formGroup.get('yearFormed')?.touched">
+          <small *ngIf="formGroup.get('yearFormed')?.errors?.['required']"
+                 class="form-text text-danger">This field is required</small>
+          <small *ngIf="formGroup.get('yearFormed')?.errors?.['min']"
+                 class="form-text text-danger">Year released can not be before {{formGroup.get('yearFormed')?.errors?.['min'].min}}</small>
+        </ng-container>
+      </div>
+      
+      
+      <div class="form-group">
+        <label for="members">Members <span class="text-danger">*</span></label>
+        <input formControlName="members"
+               type="text"
+               class="form-control"
+               id="members"
+               placeholder="Enter members' names">
+        <ng-container *ngIf="formGroup.get('bandId')?.invalid && formGroup.get('bandId')?.touched">
+          <small *ngIf="formGroup.get('bandId')?.errors?.['required']"
+                 class="form-text text-danger">This field is required</small>
+        </ng-container>
+      </div>
+    
+  </div>
+  <div class="modal-footer">
+    <button type="button" (click)="hideDialog()"
+            class="btn btn-secondary">Cancel
+    </button>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+</form>

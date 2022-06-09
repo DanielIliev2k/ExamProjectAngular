@@ -1,26 +1,31 @@
 <div class="d-flex justify-content-between mt-2">
     <h3>Bands</h3>
     <div>
-      <button class="btn btn-primary">Create</button>
+      <button (click)="onCreateClick()" class="btn btn-primary  mb-2">Create</button>
     </div>
   </div>
-  <div>
-    <table class="table">
+    <table class="table table-striped table-dark table-hover" id="bandsTable">
       <thead>
       <tr>
-        <th>Name</th>
-        <th>Date Formed</th>
+        <th>Name <button class="btn btn-light btn-sml pd-0" (click)="sort(0)">&#8597;</button></th>
+        <th>Year Formed <button class="btn btn-light btn-sml pd-0" (click)="sort(1)">&#8597;</button></th>
         <th>Members</th>
-        <th>Albums</th>
+        <th>Options</th>
       </tr>
       </thead>
       <tbody>
         <tr *ngFor="let band of bands">
           <td>{{band.name}}</td>
-          <td>{{band.yearFormed |date:"yyyy"}}</td>
+          <td>{{band.yearFormed}}</td>
           <td>{{band.members}}</td>
-          <td *ngFor="let album of band.albums">{{album.name}</td>
+          <td>
+            <button (click)="onUpdateClick(band)"
+              class="btn btn-sm btn-light ms-2 mb-2">Edit
+            </button>
+            <button (click)="onDeleteClick(band)"
+              class="btn btn-sm btn-danger ms-2 mb-2">Delete
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
-  </div>
