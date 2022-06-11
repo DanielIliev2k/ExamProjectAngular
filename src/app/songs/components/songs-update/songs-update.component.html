@@ -24,7 +24,6 @@
             is {{formGroup.get('name')?.errors?.['minlength'].requiredLength}}</small>
         </ng-container>
       </div>
-      
       <div class="form-group">
         <label for="album">Album <span class="text-danger">*</span></label>
         <select formControlName="albumId" class="form-control" id="album">
@@ -45,7 +44,6 @@
                  class="form-text text-danger">This field is required</small>
         </ng-container>
       </div>
-    
   </div>
   <div class="modal-footer">
     <button type="button" (click)="hideDialog()"

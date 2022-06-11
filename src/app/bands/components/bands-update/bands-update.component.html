@@ -36,6 +36,8 @@
                  class="form-text text-danger">This field is required</small>
           <small *ngIf="formGroup.get('yearFormed')?.errors?.['min']"
                  class="form-text text-danger">Year released can not be before {{formGroup.get('yearFormed')?.errors?.['min'].min}}</small>
+                 <small *ngIf="formGroup.get('yearFormed')?.errors?.['max']"
+                 class="form-text text-danger">Year released can not be after {{formGroup.get('yearFormed')?.errors?.['max'].max}}</small>
         </ng-container>
       </div>
       
@@ -47,8 +49,8 @@
                class="form-control"
                id="members"
                placeholder="Enter members' names">
-        <ng-container *ngIf="formGroup.get('bandId')?.invalid && formGroup.get('bandId')?.touched">
-          <small *ngIf="formGroup.get('bandId')?.errors?.['required']"
+        <ng-container *ngIf="formGroup.get('members')?.invalid && formGroup.get('members')?.touched">
+          <small *ngIf="formGroup.get('members')?.errors?.['required']"
                  class="form-text text-danger">This field is required</small>
         </ng-container>
       </div>
